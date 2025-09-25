@@ -26,21 +26,43 @@ public class ListeNotes {
     @Override
     public String toString() {
         String str = ""; //Chaine à construire
-        return str;
+        for (int i = 0; i < notes.length; ++i) {
+            str += notes[i] + ";";
+        }
+        return "["+str+"]";
     }
     /**
      * Retourne la moyenne des notes du tableau de notes.
      * @return la moyenne des notes du tableau de notes
      */
     public double getMoyenne() {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        double somme = 0;
+        for (int i = 0; i< notes.length; i++) {
+            somme += notes[i];
+        }
+        return somme/notes.length;
     }
     /**
      * Retourne la plus petite valeur du tableau de notes
      * @return la plus petite valeur du tableau de notes
      */
     public double getMinimum() {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        double temp;
+        int min = 0;
+        for (int i = 0; i < notes.length; ++i) {
+            min = i;
+            for (int j = i + 1; j < notes.length; j++) {
+                if (notes[j] < notes[min]) {
+                    min = j;
+                }
+            }
+            temp = notes[min];
+            notes[min] = notes[i];
+            notes[i] = temp;
+        }
+        return notes[0];
     }
     /**
      * Retourne un tableau contenant toutes les notes entre un minimum et un maximum. Le tableau retourné ne doit pas
@@ -50,7 +72,14 @@ public class ListeNotes {
      * @return tableau contenant toutes les notes du tableau comprises entre min et max, inclusivement
      */
     public double[] getNotesParIntervalle(double min, double max) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        double [] intervalle = new double[];
+        for  (int i = 0; i < notes.length; ++i) {
+            if (notes[i] <= min && notes[i] >= max) {
+                intervalle[i] = notes[i];
+            }
+        }
+        System.out.println(intervalle.toString());
     }
     /**
      * Trie le tableau des notes par ordre croissant

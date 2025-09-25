@@ -3,7 +3,8 @@ package exercice1;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Programme1 {
+public class
+Programme1 {
 
     static Scanner clavier = new Scanner(System.in);
 
