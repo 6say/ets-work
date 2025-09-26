@@ -11,6 +11,7 @@ Programme1 {
     public static void main(String[] args) {
         ListeNotes liste1 = new ListeNotes();
         char choix;
+        double[] tabNotes;
 
         clavier.useLocale(Locale.ENGLISH);
 
@@ -28,6 +29,23 @@ Programme1 {
                     break;
                 case 'v' : //rechercher des notes d'un intervalle
                     System.out.println("=> Rechercher des notes d'un intervalle.");
+
+                    System.out.println("Entrez le minimum : ");
+                    double l_min = clavier.nextDouble();
+                    System.out.println("Entrez le minimum : ");
+                    double l_max = clavier.nextDouble();
+                    clavier.nextLine(); //avale ou flush le ENTER
+
+                    tabNotes = liste1.getNotesParIntervalle(l_min, l_max);
+                    if (tabNotes.length == 0)
+                        System.out.println("Les notes n'existe pas");
+                    else {
+                        System.out.println("Voici une liste des notes entre "+l_min+" et "+l_max+" : ");
+                        for (int i = 0; i < tabNotes.length; i++) {
+                            System.out.print(tabNotes[i] + " ");
+                        }
+                    }
+
                     break;
                 case 't' : //tri
                     liste1.trier();

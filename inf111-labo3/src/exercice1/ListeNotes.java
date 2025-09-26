@@ -26,8 +26,11 @@ public class ListeNotes {
     @Override
     public String toString() {
         String str = ""; //Chaine à construire
-        for (int i = 0; i < notes.length; ++i) {
-            str += notes[i] + ";";
+        for (int i = 0; i < notes.length; i++) {
+            str += notes[i];
+            if(i < notes.length-1) {
+                str += ";";
+            }
         }
         return "["+str+"]";
     }
@@ -49,20 +52,13 @@ public class ListeNotes {
      */
     public double getMinimum() {
         //throw new NotImplementedException();
-        double temp;
-        int min = 0;
-        for (int i = 0; i < notes.length; ++i) {
-            min = i;
-            for (int j = i + 1; j < notes.length; j++) {
-                if (notes[j] < notes[min]) {
-                    min = j;
-                }
+        double min = notes[0];
+        for(int i=0;i<notes.length;i++) {
+            if (notes[i] < min){
+                min = notes[i];
             }
-            temp = notes[min];
-            notes[min] = notes[i];
-            notes[i] = temp;
         }
-        return notes[0];
+        return min;
     }
     /**
      * Retourne un tableau contenant toutes les notes entre un minimum et un maximum. Le tableau retourné ne doit pas
@@ -73,20 +69,41 @@ public class ListeNotes {
      */
     public double[] getNotesParIntervalle(double min, double max) {
         //throw new NotImplementedException();
-        double [] intervalle = new double[];
-        for  (int i = 0; i < notes.length; ++i) {
-            if (notes[i] <= min && notes[i] >= max) {
-                intervalle[i] = notes[i];
+        double[] intervalle;
+        int compteur = 0;
+        for  (int i = 0; i< notes.length; i++) {
+            if (notes[i] >= min && notes[i] <= max) {
+                compteur++;
             }
         }
-        System.out.println(intervalle.toString());
+
+        intervalle = new double[compteur];
+
+        for  (int i = 0, j=0; i < notes.length; i++) {
+            if (notes[i] >= min && notes[i] <= max) {
+                intervalle[j] = notes[i];
+                j++;
+            }
+        }
+        return intervalle;
     }
     /**
      * Trie le tableau des notes par ordre croissant
      */
     public void trier() {
         //Utilise le tri par sélection ou le tri par insertion.
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        int i, j;
+        double temp;
+        for (i = 1; i < notes.length; ++i) {
+            temp = notes[i];
+            for (j = i; j > 0 && notes[j-1] > temp; j--) {
+                notes[j] = notes[j-1];
+            }
+            notes[j] = temp;
+        }
+        //aprés triage
+        trie = true;
     }
     /**
      * Recherche une note dans le tableau de notes et retourne le plus petit indice de case la contenant. Cette méthode
@@ -96,7 +113,13 @@ public class ListeNotes {
      *          si la note n'existe pas dans le tableau
      */
     public int getIndice(double note) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        if (trie = false) {
+          //recherche binaire
+
+        } else {
+            //recherche sequentielle
+        }
     }
     /**
      * Insère une nouvelle note à une position spécifique. La dernière note est retirée du tableau et retournée.
