@@ -1,4 +1,4 @@
-package exercice1;
+package main.java.exercice1;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -16,7 +16,8 @@ public class ListeNotes {
      * @param valeurs tableau servant à initialiser le tableau de notes
      */
     public ListeNotes(double[] valeurs) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        notes = valeurs;
     }
     /**
      * Retourne chaine contenant les notes du tableau séparées par un point-virgule. La chaine est délimitée par des
@@ -114,11 +115,40 @@ public class ListeNotes {
      */
     public int getIndice(double note) {
         //throw new NotImplementedException();
-        if (trie = false) {
+        boolean trouvee =  false;
+        if (trie == true) {
           //recherche binaire
+            int debut = 0;
+            int fin = notes.length-1;
+            int milieu = -1;
+
+            while (debut<=fin && !trouvee) {
+                milieu = (debut+fin)/2;
+                if (notes[milieu] == note) {
+                    trouvee = true;
+                } else if (notes[milieu] > note) {
+                    fin = milieu - 1;
+                } else {
+                    debut = milieu + 1;
+                }
+            }
+            if (trouvee) {
+                return milieu;
+            } else {
+                return -1;
+            }
 
         } else {
             //recherche sequentielle
+            int i = 0;
+            while (i<notes.length && !trouvee) {
+                if (notes[i] == note) {
+                    trouvee = true;
+                    return i;
+                }
+                i++;
+            }
+            return -1;
         }
     }
     /**
@@ -128,7 +158,14 @@ public class ListeNotes {
      * @return la note retirée du tableau
      */
     public double inserer(double v, int position) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        double temp = 0;
+        for (int i = 0; i < notes.length; i++) {
+            temp = notes[position];
+            notes[position] = v;
+            notes[position+1] = temp;
+        }
+        return notes[position];
     }
     /**
      * Insère une liste de notes à une position spécifique.

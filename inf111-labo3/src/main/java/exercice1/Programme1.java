@@ -1,4 +1,4 @@
-package exercice1;
+package main.java.exercice1;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -52,12 +52,45 @@ Programme1 {
                     break;
                 case 'r' : //recherche de notes
                     System.out.println("=> Recherche de note.");
+                    System.out.println("Entrez la note que vous voulez rechercher:  : ");
+                    double l_note = clavier.nextDouble();
+                    clavier.nextLine();
+                    System.out.println("Votre note est à l'indice: " + liste1.getIndice(l_note));
+
                     break;
                 case 'c' : //changer de liste de notes
                     System.out.println("=> Changer de liste.");
+
+                    System.out.println("Combien de notes dans la nouvelle liste: ");
+                    int new_length = clavier.nextInt();
+                    clavier.nextLine();
+
+                    tabNotes = new double[new_length];
+                    for (int i = 0; i < new_length; i++) {
+                        System.out.print("Entrer la note à la position " + i +" : ");
+                        tabNotes[i] = clavier.nextDouble();
+                    }
+                    clavier.nextLine();
+                    liste1 = new ListeNotes(tabNotes);
                     break;
                 case 'i' : //insérer des notes
                     System.out.println("=> Insérer des notes.");
+
+                    System.out.println("Combien de notes voulez vous entrer? : ");
+                    int ins_length = clavier.nextInt();
+                    System.out.println("À quelle position voulez-vous les inserer? : ");
+                    int ins_position = clavier.nextInt();
+                    clavier.nextLine();
+
+                    double[] ins_notes = new double[ins_length];
+                    for (int i = 0; i < ins_length; i++) {
+                        System.out.println("Entrer la note "+ i +" : ");
+                        ins_notes[i] = clavier.nextDouble();
+                    }
+                    clavier.nextLine();
+                    for (int j = 0; j < ins_notes.length; j++) {
+                        liste1 = new ListeNotes(ins_notes[j], ins_notes);
+                    }
                     break;
                 default :
                     System.out.println("Choix invalide.");
