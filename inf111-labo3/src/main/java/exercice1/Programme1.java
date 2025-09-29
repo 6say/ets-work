@@ -88,9 +88,7 @@ Programme1 {
                         ins_notes[i] = clavier.nextDouble();
                     }
                     clavier.nextLine();
-                    for (int j = 0; j < ins_notes.length; j++) {
-                        liste1 = new ListeNotes(ins_notes[j], ins_notes);
-                    }
+                    liste1.inserer(ins_notes, ins_position);
                     break;
                 default :
                     System.out.println("Choix invalide.");

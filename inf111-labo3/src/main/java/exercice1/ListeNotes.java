@@ -159,13 +159,12 @@ public class ListeNotes {
      */
     public double inserer(double v, int position) {
         //throw new NotImplementedException();
-        double temp = 0;
-        for (int i = 0; i < notes.length; i++) {
-            temp = notes[position];
-            notes[position] = v;
-            notes[position+1] = temp;
+        double noteARetourner = notes[notes.length-1];
+        for (int i=notes.length-1; i>position;i--) {
+            notes[i] = notes[i-1];
         }
-        return notes[position];
+        notes[position] = v;
+        return noteARetourner;
     }
     /**
      * Insère une liste de notes à une position spécifique.
@@ -174,7 +173,14 @@ public class ListeNotes {
      * @return tableau contenant toutes les notes retirées du tableau
      */
     public double[] inserer(double[] t, int position) {
-        //Cette méthode doit utiliser la méthode inserer() précédente.
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        double[] notesARetourner;
+        int nbNotesAInserer = notes.length - position;
+        if (nbNotesAInserer>t.length)
+            nbNotesAInserer = t.length;
+        notesARetourner = new double[nbNotesAInserer];
+        for (int i=0; i<t.length && i+position<notes.length;i++)
+            notesARetourner[i] = inserer(t[i], i+position);
+        return notesARetourner;
     }
 }
