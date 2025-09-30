@@ -1,24 +1,24 @@
 package com.cndiaga.classes;
 
 public class LigneFacture {
-    private Produit produt;
+    private Produit produit;
     private int quantite;
 
-    public LigneFacture(Produit produt, int quantite) {
-        this.produt = produt;
+    public LigneFacture(Produit produit, int quantite) {
+        this.produit = produit;
         this.quantite = quantite;
     }
-    public LigneFacture(Produit produt) {
-        this.produt = produt;
+    public LigneFacture(Produit produit) {
+        this.produit = produit;
         this.quantite = 1;
     }
 
-    public Produit getProdut() {
-        return produt;
+    public Produit getProduit() {
+        return produit;
     }
 
-    public void setProdut(Produit produt) {
-        this.produt = produt;
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 
     public int getQuantite() {
@@ -32,7 +32,7 @@ public class LigneFacture {
     @Override
     public String toString() {
         return "LigneFacture{" +
-                "produt=" + produt +
+                "produt=" + produit +
                 ", quantite=" + quantite +
                 '}';
     }
@@ -40,7 +40,7 @@ public class LigneFacture {
     public double calculerTotal() {
         double total = 0 ;
         //ou peut etre un boucle for
-        total = produt.getPrixUn()*quantite;
+        total = produit.getPrixUn()*quantite;
         return total;
     }
 }
