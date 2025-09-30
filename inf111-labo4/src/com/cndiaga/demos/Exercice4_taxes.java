@@ -1,7 +1,7 @@
 package com.cndiaga.demos;
 import com.cndiaga.classes.Taxes;
 
-public class Exercice4 {
+public class Exercice4_taxes {
     public static void main(String[] args) {
         double prix, quantite, montantHorsTaxes, mTps, mTva,
                 mTotal, totalTaxes;

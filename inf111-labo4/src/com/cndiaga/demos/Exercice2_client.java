@@ -4,7 +4,7 @@ import com.cndiaga.classes.Client;
 
 import java.util.Scanner;
 
-public class Exercice2 {
+public class Exercice2_client {
     public static void main(String[] args) {
         System.out.println("Ceci est une demonstration de la classe client");
 

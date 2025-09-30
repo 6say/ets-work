@@ -4,7 +4,7 @@ import com.cndiaga.classes.Produit;
 
 import java.util.Scanner;
 
-public class Exercice3 {
+public class Exercice3_ligneFacture {
     public static void main(String[] args) {
 
         System.out.println("Ceci est une demonstration de la classe client");

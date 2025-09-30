@@ -31,16 +31,15 @@ public class LigneFacture {
 
     @Override
     public String toString() {
-        return "LigneFacture{" +
-                "produt=" + produit +
-                ", quantite=" + quantite +
-                '}';
+        return "" + quantite +" "+ produit.getDesignation()+" "+ produit.getPrixUn() + " $\n";
     }
 
     public double calculerTotal() {
         double total = 0 ;
         //ou peut etre un boucle for
-        total = produit.getPrixUn()*quantite;
+        if (quantite > 0 && produit != null) {
+            total = produit.getPrixUn() * quantite;
+        }
         return total;
     }
 }

@@ -3,7 +3,7 @@ import com.cndiaga.classes.Produit;
 
 import java.util.Scanner;
 
-public class Exercice1 {
+public class Exercice1_produit {
     public static void main(String[] args) {
         System.out.println("Ceci est une demonstration de la classe produit");
 
