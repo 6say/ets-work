@@ -1,25 +1,25 @@
 package com.cndiaga.classes;
 
-public class Produits {
+public class Produit {
     //attributs
     private String reference, designation;
     private double prixUn;
 
     //Constructeur sans arguments
-    public Produits() {
+    public Produit() {
         reference = "";
         designation = "";
         prixUn = 1.0;
     }
     //Constructeur 1
-    public Produits(String reference, String designation, double prixUn) {
+    public Produit(String reference, String designation, double prixUn) {
         this.reference = reference;
         this.designation = designation;
         this.prixUn = prixUn;
     }
 
     //Constructeur 2
-    public Produits(String reference, String designation) {
+    public Produit(String reference, String designation) {
         this.reference = reference;
         this.designation = designation;
         prixUn = 1.0;
@@ -56,7 +56,7 @@ public class Produits {
         return "{ Réference: " + reference + " ; Designation: " + designation + " ; Prix un: " + prixUn + " }";
     }
 
-    public boolean egaliteProduit(Produits produit) {
+    public boolean egaliteProduit(Produit produit) {
         if (this.reference.equals(produit.getReference())) {
             return true;
         }
