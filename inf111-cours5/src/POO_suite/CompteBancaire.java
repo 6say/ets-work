@@ -17,8 +17,17 @@ public class CompteBancaire {
         if (obj instanceof CompteBancaire) {
             CompteBancaire cpt = (CompteBancaire) obj;
             return this.numero.equals(cpt.numero); //l'égalité est base sur l'identité des objets: leurs numeros de compte dans cas
-        }
-        else
+        } else
             return false;
+
+
+        //Il est recommender de redefinire hashCode à chaque fois qu'on redéfinit equals, (voir définition)
+
     }
+
+    //Attributs de classe
+    private static double fraisOperation = 2; //Cette attribut n'aura alors pa besoin d'une instance de la classe pour être consulter.
+    //voir
+
 }
+
