@@ -23,7 +23,7 @@ public class FileStatique{
      * Crée une file avec une capacité de 10.
      */
     public FileStatique(){
-    	donnees = new Object[10];
+    	
     }
 
     /**
@@ -31,7 +31,7 @@ public class FileStatique{
      * @param taille La taille voulue pour la file.
      */
     public FileStatique(int taille){
-    	donnees = new Object[taille];
+    	
     }
 
     /**
@@ -41,12 +41,8 @@ public class FileStatique{
      * @return true si l'opération réussit et false sinon (file pleine)
      */
     public boolean enfiler(Object element) {
-    	if(taille()==donnees.length)
-    	    return false;
-        donnees[dernier] = element;
-        dernier = (dernier+1)%donnees.length;
-        nbElement++;
-        return true;
+    	
+    	return false;
     }
 
     /**
@@ -55,13 +51,8 @@ public class FileStatique{
      * @return Le premier élément de la file s'il existe ou null sinon.
      */
     public Object defiler(){
-    	if(estVide())
-            return null;
-        Object temp =  donnees[premier];
-        donnees[premier] = null;
-        premier = (premier+1)%donnees.length;
-        nbElement--;
-        return temp;
+    	
+    	return null;
     }
 
     /**
@@ -70,10 +61,8 @@ public class FileStatique{
      * @return true si la  file est vide et false sinon.
      */
     public boolean estVide(){
-       if (nbElement > 0){
-           return false;
-       }
-       return true;
+       
+    	return false;
     }
 
 	 /**
@@ -82,9 +71,7 @@ public class FileStatique{
 	 public void vider(){
 		 //Indication : utiliser une boucle while pour defiler la file aussi
 		 //longtemps qu'elle n'est pas vide (2 lignes de code).
-		 while(nbElement>=donnees.length){
-             defiler();
-         }
+		 
 	 }
 
     /**
@@ -93,9 +80,8 @@ public class FileStatique{
      * @return Le premier élément si la file n'est pas vide et null sinon.
      */
     public Object debut(){
-        if(estVide())
-            return null;
-        return donnees[premier];
+
+    	return null;
     }
 
 
@@ -105,7 +91,7 @@ public class FileStatique{
      * @return Le nombre d'éléments actuellement dans la file.
      */
     public int taille(){
-        int n = donnees.length;
-        return ((n-premier+dernier)%n);
+    	
+    	return 0;
     }
 }

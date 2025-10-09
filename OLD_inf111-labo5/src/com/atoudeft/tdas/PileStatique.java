@@ -24,7 +24,8 @@ public class PileStatique {
     */
    public PileStatique(){
        donnees = new Object[10];
-       sommet = -1;
+       sommet = donnees.length - 1;
+       nbElement = donnees.length;
    }
 
    /**
@@ -33,7 +34,8 @@ public class PileStatique {
     */
    public PileStatique(int taille){
        donnees = new Object[taille];
-       sommet = -1;
+       sommet = donnees.length - 1;
+       nbElement = donnees.length;
 
    }
 
@@ -48,7 +50,7 @@ public class PileStatique {
            return false;
        sommet++;
        donnees[sommet] = element;
-       nbElement++;
+
        return true;
    }
 
@@ -63,7 +65,6 @@ public class PileStatique {
        Object temp = donnees[sommet];
        donnees[sommet] = null;
        sommet--;
-       nbElement--;
        return temp;
    }
 
@@ -73,7 +74,7 @@ public class PileStatique {
     * @return true si la  pile est vide et false sinon.
     */
    public boolean estVide(){
-       return sommet<0;
+       return donnees == null;
    }
 
 	 /**
