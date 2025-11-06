@@ -1,4 +1,4 @@
-package main.java.exercice1;
+package exercice1;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
