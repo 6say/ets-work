@@ -1,8 +1,8 @@
 package com.atoudeft.tdas;
 
 /**
- * Implémente une pile d'objets de manière statique (avec un tableau)
- * Stratégie de fonctionnement : LIFO (Last In First Out).
+ * Implï¿½mente une pile d'objets de maniï¿½re statique (avec un tableau)
+ * Stratï¿½gie de fonctionnement : LIFO (Last In First Out).
  *
  * @author <a href="mailto:Abdelmoumene.Toudeft@etsmtl.ca">A. Toudeft</a>
  * @version 2005
@@ -10,17 +10,18 @@ package com.atoudeft.tdas;
 
 public class PileStatique {
 
-	 private Object[] donnees;  //les données de la file
-	 private int sommet; 		//indice de l'élément au sommet de la file
+	 private Object[] donnees;  //les donnï¿½es de la file
+	 private int sommet; 		//indice de l'ï¿½lï¿½ment au sommet de la file
 
-	 private int nbElement; 	//Nombre d'éléments dans la pile (utilisé pour
-	 					//ne pas avoir à recalculer le nombre d'éléments dans
-	 					//la méthode taille()). Ne pas oublier de l'incrémenter
-	 					//lorsqu'on empile et le décrémenter lorsqu'on dépile.
+	 @SuppressWarnings("unused")
+    private int nbElement; 	//Nombre d'ï¿½lï¿½ments dans la pile (utilisï¿½ pour
+	 					//ne pas avoir ï¿½ recalculer le nombre d'ï¿½lï¿½ments dans
+	 					//la mï¿½thode taille()). Ne pas oublier de l'incrï¿½menter
+	 					//lorsqu'on empile et le dï¿½crï¿½menter lorsqu'on dï¿½pile.
 
    /**
-    * Constructeur sans paramètre
-    * Crée une pile avec une capacité de 10.
+    * Constructeur sans paramï¿½tre
+    * Crï¿½e une pile avec une capacitï¿½ de 10.
     */
    public PileStatique(){
        donnees = new Object[10];
@@ -28,7 +29,7 @@ public class PileStatique {
    }
 
    /**
-    * Crée une pile de la taille demandée.
+    * Crï¿½e une pile de la taille demandï¿½e.
     * @param taille La taille voulue pour la file.
     */
    public PileStatique(int taille){
@@ -38,10 +39,10 @@ public class PileStatique {
    }
 
    /**
-    * Ajoute un élément au sommet de la pile.
+    * Ajoute un ï¿½lï¿½ment au sommet de la pile.
     * 
-    * @param element l'élément à empiler.
-    * @return true si l'opération réussit et false sinon (pile pleine)
+    * @param element l'ï¿½lï¿½ment ï¿½ empiler.
+    * @return true si l'opï¿½ration rï¿½ussit et false sinon (pile pleine)
     */
    public boolean empiler(Object element) {
        if (taille()==donnees.length)
@@ -53,9 +54,9 @@ public class PileStatique {
    }
 
    /**
-    * Retire l'élément au sommet de la pile.
+    * Retire l'ï¿½lï¿½ment au sommet de la pile.
     * 
-    * @return L'élément au sommet de la pile s'il existe ou null sinon.
+    * @return L'ï¿½lï¿½ment au sommet de la pile s'il existe ou null sinon.
     */
    public Object depiler(){
        if (estVide())
@@ -87,9 +88,9 @@ public class PileStatique {
 	 }
 
    /**
-    * Permet de consulter l'élément au sommet de la pile sans l'enlever.
+    * Permet de consulter l'ï¿½lï¿½ment au sommet de la pile sans l'enlever.
     * 
-    * @return L'élément au sommet si la pile n'est pas vide et null sinon.
+    * @return L'ï¿½lï¿½ment au sommet si la pile n'est pas vide et null sinon.
     */
    public Object peek(){
 
@@ -98,9 +99,9 @@ public class PileStatique {
 
 
    /**
-    * Retourne le nombre d'éléments dans la pile.
+    * Retourne le nombre d'ï¿½lï¿½ments dans la pile.
     * 
-    * @return Le nombre d'éléments actuellement dans la pile.
+    * @return Le nombre d'ï¿½lï¿½ments actuellement dans la pile.
     */
    public int taille(){
    	if (!estVide()){
