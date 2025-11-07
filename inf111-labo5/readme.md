@@ -1,7 +1,7 @@
 # TODO
 - [x] Exercice 1 - Piles et Files statiques
 - [x] Exercice 2 - Palindrome
-- [ ] Exercice 3 - Les points
+- [x] Exercice 3 - Les points
 - [ ] Exercice 4 - Les cercles
 - [ ] Exercice 5 - Les dessins
 

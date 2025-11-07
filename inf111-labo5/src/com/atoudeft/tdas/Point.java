@@ -4,6 +4,13 @@ public class Point {
     private double abs;
     private double ord;
 
+    public double getAbs() { 
+        return abs;
+    }
+    public double getOrd() { 
+        return ord;
+    }
+
     public Point(double abs,double ord) { 
         this.abs = abs;
         this.ord = ord;
@@ -41,7 +48,7 @@ public class Point {
     }
 
     public double dist() { 
-        this(new Point());
+         this(new Point());
     }
 
 }
