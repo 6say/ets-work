@@ -30,7 +30,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return "("+ abs + "," + ord + ")";
+        return "("+ (int)abs + "," + (int)ord + ")";
     }
 
     public double dist(Point point) {

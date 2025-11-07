@@ -31,11 +31,14 @@ public class DemoPoint {
                     points.add(new Point());
                     break;
                 case 1:
+                    System.out.print("Entrez une abscisse: ");
                     abs = sc.nextDouble();
                     points.add(new Point(abs));
                     break;
-                case 2:
+                    case 2:
+                    System.out.print("Entrez une abscisse: ");
                     abs = sc.nextDouble();
+                    System.out.print("Entrez une ordonnee: ");
                     ord = sc.nextDouble();
                     points.add(new Point(abs,ord));
                 default:
@@ -48,13 +51,13 @@ public class DemoPoint {
 
                 
             }
-
             System.out.println("Entrer 1 pour creer un autre point et 0 pour quitter");
             choix1 = sc.nextInt();
         }
         
         String menu2 = "1 - Distance entre deux points"
-                        +"\n2 - Distance à l'origine";
+                        +"\n2 - Distance à l'origine"
+                        +"\nFaites un choix de calcul";
         System.out.println(menu2);
         int choix3 = sc.nextInt();
 
@@ -71,7 +74,6 @@ public class DemoPoint {
                 Point p = points.get(sc.nextInt());
                 System.out.println("La distance entre " + p.toString() + "& l'origine est de: "  + p.dist());    
                 break;
-        
             default:
                 break;
         }
