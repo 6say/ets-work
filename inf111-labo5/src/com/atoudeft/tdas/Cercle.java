@@ -22,7 +22,7 @@ public class Cercle {
     }
     public Cercle() {
         centre = new Point();
-        rayon = 0;
+        rayon = 10;
     }
 
     public double getSurface() {
