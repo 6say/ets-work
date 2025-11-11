@@ -14,57 +14,258 @@ public class ListeChaineeDouble {
 	}
 	
 	public void ajouterAuDebut(Object obj) {
+		//Noeud temp = tete;
+		//tete.donnee = obj;
+		//tete.suivant = temp;
+
+		Noeud nouveau = new Noeud(tete, null, obj);
+		if (tete!=null)
+			tete.precedent = nouveau;
+		else
+			fin = nouveau;	//l'Ã©lÃ©ment ajoutÃ© est aussi le dernier
+		tete = nouveau;
+		nbElements++;
 		
 	}
 	public void ajouterALaFin(Object obj) {
-		
+		//if(estVide()){
+		//	fin.donnee = obj;
+		//}
+		//Noeud temp = fin;
+		//temp.suivant = fin;
+		//fin.donnee = obj;
+		//fin.precedent = temp;
+
+		Noeud nouveau = new Noeud(null, fin, obj);
+		if (fin!=null)
+			fin.suivant = nouveau;
+		else
+			tete = nouveau;	//l'Ã©lÃ©ment ajoutÃ© est aussi le premier
+		fin = nouveau;
+		nbElements++;	
+
 	}
 	/*
-	 * Ajoute un élément à la position index.
-	 * Déclenche l'exception si index est hors limites (<0 ou >nbElements)
+	 * Ajoute un ï¿½lï¿½ment ï¿½ la position index.
+	 * Dï¿½clenche l'exception si index est hors limites (<0 ou >nbElements)
 	 */
 	public void ajouter(int index, Object obj) throws IndexOutOfBoundsException{
-		
+		//if (index == 0 || tete == null) {
+		//	Noeud nouveau = new Noeud(tete,null,obj);
+		//	if(tete!=null)
+		//		tete.precedent = nouveau;
+		//	tete = nouveau;
+		//}
+		//else{
+		//	Noeud temp = tete;
+		//	int i = 1;
+		//	while (temp.suivant!=null && i<index) {
+		//		temp = temp.suivant;
+		//		i++;
+		//	}
+		//	if(i<index) {
+		//		throw new IndexOutOfBoundsException;
+		//	}
+		//	else {
+		//		Noeud nouveau = new Noeud(temp.suivant, temp, obj);
+		//		temp.suivant = nouveau;
+		//		if(nouveau.suivant!=null) 
+		//			nouveau.suivant.precedent = nouveau;
+		//	}
+		//}
+
+				if (index<0 || index>this.nbElements)
+			throw new IndexOutOfBoundsException("Indice ("+index+") hors limites!");
+
+		if (index==0) //ajouter au dÃ©but
+			this.ajouterAuDebut(obj);
+		else if (index==this.nbElements) //ajouter Ã  la fin
+			this.ajouterALaFin(obj);
+		else { //ajouter Ã  une position quelconque
+			Noeud temp = tete;
+			int i = 1;
+			while (temp.suivant != null && i<index) {
+				temp = temp.suivant;
+				i++;
+			}
+			Noeud nouveau = new Noeud(temp.suivant, temp, obj);
+		    temp.suivant = nouveau;
+		    if (nouveau.suivant!=null) {
+		    	temp = nouveau.suivant;
+		    	temp.precedent = nouveau;
+		    }
+		    nbElements++;
+		}
 	}
 	
 	/*
-	 * Retourne l'élément de la liste qui se trouve à la position index.
-	 * Déclenche l'exception si index est hors limites (<0 ou >nbElements)
+	 * Retourne l'ï¿½lï¿½ment de la liste qui se trouve ï¿½ la position index.
+	 * Dï¿½clenche l'exception si index est hors limites (<0 ou >nbElements)
 	 */
 	public Object get(int index) throws IndexOutOfBoundsException{
-		Object x = null;
+		//Object x = null;
+		//Noeud temp = tete;
+		//int i = 0;
+		//while(i<nbElements){
+		//	if(i == index) {
+		//		x = temp.donnee;
+		//	}
+		//	temp = temp.suivant;
+		//	i++;
+		//}
+		//
+		//return x;
+
+		Noeud temp;
+		int i;
 		
-		return x;
+		if (index<0 || index>=this.nbElements)
+			throw new IndexOutOfBoundsException("Indice ("+index+") hors limites!");
+		
+		//On cherche l'Ã©lÃ©ment du dÃ©but si l'Ã©lÃ©ment est proche du dÃ©but et de 
+		//la fin s'il est proche de la fin :
+		if (index < nbElements/2) {
+			temp = tete;
+			i = 0;
+			while (temp!=null && i<index) {
+				temp = temp.suivant;
+				i++;
+			}
+		}
+		else {
+			temp = fin;
+			i = nbElements-1;
+			while (temp!=null && i>index) {
+				temp = temp.precedent;
+				i--;
+			}
+		}
+		return temp.donnee;
+
 	}
 	
 	/*
-	 * Retire le dernier élément de la liste.
-	 * Déclenche l'exception si la liste est vide
+	 * Retire le dernier ï¿½lï¿½ment de la liste.
+	 * Dï¿½clenche l'exception si la liste est vide
 	 */
 	public Object retirerDernier() throws NoSuchElementException {
-		Object x = null;
+		//Object x = null;
+		//x = fin;
+		//fin = x.precedent;
+		//fin.suivant = null;
+		//
+		//return x;
+
+		Object objRetire = null;
 		
-		return x;
+		if (estVide())
+			throw new NoSuchElementException("Liste vide!");
+		
+		objRetire = this.fin.donnee;
+		this.fin = this.fin.precedent;
+		if (this.fin == null) //l'Ã©lÃ©ment retirÃ© est le seul dans la liste
+			this.tete = null;
+		else
+			this.fin.suivant = null;
+		nbElements--;
+		return objRetire;
 	}
 	/*
-	 * Retire le premier élément de la liste.
-	 * Déclenche l'exception si la liste est vide
+	 * Retire le premier ï¿½lï¿½ment de la liste.
+	 * Dï¿½clenche l'exception si la liste est vide
 	 */
 	public Object retirerPremier() throws NoSuchElementException {
-		Object x = null;
+		//Object x = null;
+		//
+		//return x;
+
+		Object objRetire = null;
 		
-		return x;
+		if (estVide())
+			throw new NoSuchElementException("Liste vide!");	
+		
+		objRetire = this.tete.donnee;
+		this.tete = this.tete.suivant;
+		if (this.tete == null) //l'Ã©lÃ©ment retirÃ© est le seul dans la liste
+			this.fin = null;
+		else
+			this.tete.precedent = null;
+		nbElements--;
+		return objRetire;
 	}
 	/*
-	 * Retire l'élément de la liste qui se trouve à la position index.
-	 * Déclenche l'exception IndexOutOfBoundsException si index est hors limites
+	 * Retire l'ï¿½lï¿½ment de la liste qui se trouve ï¿½ la position index.
+	 * Dï¿½clenche l'exception IndexOutOfBoundsException si index est hors limites
 	 * (<0 ou >nbElements)
-	 * Déclenche l'exception NoSuchElementException si la liste est vide
+	 * Dï¿½clenche l'exception NoSuchElementException si la liste est vide
 	 */
 	public Object retirer(int index) 
 			throws IndexOutOfBoundsException, NoSuchElementException {
+		//Object x = null;
+		//
+		//if(tete.donnee == this.get(index)) {
+		//	x = tete.donnee;
+		//	tete.donnee = null;
+		//	tete = tete.suivant;
+		//	tete.precedent = null;
+		//}
+		//else { 
+		//	Noeud temp = tete.suivant;
+		//	while (temp!=null && temp.donne != this.get(index)) { 
+		//		temp = temp.suivant;
+		//		if(temp!=null) { 
+		//			x = temp.donnee;
+		//			temp.donnee = null;
+		//			temp.suivant.precedent = temp.precedent;
+		//			temp.precedent.suivant = temp.suivant;
+		//		}
+		//	}
+		//}
+//
+//
+		//return x;
 		Object x = null;
+		Noeud temp;
+		int i;
 		
+		if (estVide())
+			throw new NoSuchElementException("Liste vide!");
+		
+		if (index<0 || index>=this.nbElements)
+			throw new IndexOutOfBoundsException("Indice ("+index+") hors limites!");
+		
+		if (index==0)
+			x = this.retirerPremier();
+		else if (index == nbElements-1)
+			x = this.retirerDernier();
+		else {
+			//On cherche l'Ã©lÃ©ment Ã  retirer : la recherche se fait du dÃ©but
+			//si l'Ã©lÃ©ment est proche du dÃ©but et de la fin s'il est proche de
+			//la fin :
+			if (index < nbElements/2) {
+				//Recherche du dÃ©but :
+				temp = tete;
+				i = 0;
+				while (i<index) {
+					temp = temp.suivant;
+					i++;
+				}
+			}
+			else {
+				//Recherche de la fin :
+				temp = fin;
+				i = nbElements-1;
+				while (i>index) {
+					temp = temp.precedent;
+					i--;
+				}
+			}
+			//retirer l'Ã©lÃ©ment rÃ©fÃ©rencÃ©Â par temp :
+			x = temp.donnee;
+			temp.suivant.precedent = temp.precedent;
+			temp.precedent.suivant = temp.suivant;
+			nbElements--;
+		}
 		return x;
 	}
 	
@@ -72,17 +273,28 @@ public class ListeChaineeDouble {
 	 * Vide la liste
 	 */
 	public void vider() {
-	
+		while (!estVide())
+			retirerPremier(); //ou: retirerDernier();
+
 	}
 
 	/*
-	 * Retourne la position du premier élément de la liste qui est equals à obj.
+	 * Retourne la position du premier ï¿½lï¿½ment de la liste qui est equals ï¿½ obj.
 	 * Retourn -1 s'il n'y en a pas. 
 	 */
 	public int indexOf(Object obj) {
 		int indice = -1;
-		//À compléter :
-		
+		//ï¿½ complï¿½ter :
+		int indice = -1;
+
+		int i = 0;
+		Noeud temp = this.tete;
+		while (temp != null && indice == -1) {
+			if (temp.donnee.equals(obj))
+				indice = i;
+			temp = temp.suivant;
+			i++;
+		}		
 		return indice;
 	}
 	
@@ -100,6 +312,26 @@ public class ListeChaineeDouble {
 	public int taille() {
 		return nbElements;
 	}
+
+	/*
+	 * MÃ©thode pas demandÃ©e dans le laboratoire (utilisÃ©e pour la dÃ©monstration)
+	 * Convertit la liste en String.
+	 */
+	public String toString() {
+		String s = "Liste (taille:"+this.nbElements+")[";
+		Noeud temp = tete;
+		int i = 0;
+		while (temp!=null) {
+			s += i+"=>"+temp.donnee;
+			if (i<nbElements-1)
+				s += "; ";
+			temp = temp.suivant;
+			i++;
+		}
+		s += "]";
+		return s;
+	}
+
 	
 	private class Noeud {
 		public Object donnee;

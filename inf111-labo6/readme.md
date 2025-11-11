@@ -1,6 +1,6 @@
 # TODO
 - [ ] Exercice 1 - Piles et Files (queues)
-    - [ ] Piles
+    - [x] Piles
     - [x] Files
 - [ ] Exercice 2 - Les Listes (doublement chainees)
 
